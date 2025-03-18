@@ -15,10 +15,7 @@ export class TasksController {
   createTask(
     @Body('title') title: string,
     @Body('description') description: string,
-    @Body('user') user: string,
-    
-    
   ): Task {
-    return this.tasksService.createTask(title, description, user);
+    return this.tasksService.createTask(title, description);
   }
 }
