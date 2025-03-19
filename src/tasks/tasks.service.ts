@@ -19,13 +19,21 @@ export class TasksService {
     return task;
   }
 
+  deleteTaskById(id: string): Task {
+    const task = this.tasks.findIndex((task) => task.id === id);
+    if (task === -1) {
+      throw new Error(`Task with ID "${id}" not found`);
+    }
+    const [deletedTask] = this.tasks.splice(task, 1);
+    return deletedTask;
+  }
+
   createTask(createTaskDto: CreateTaskDto): Task {
     const { title, description } = createTaskDto;
 
     const task: Task = {
       id: uuid(),
       title,
-
       description,
       status: TaskStatus.OPEN,
     };
