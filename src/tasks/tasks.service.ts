@@ -14,10 +14,11 @@ export class TasksService {
 
   getTasksWithFilters(filterDto: GetTasksFilterDto): Task[] {
     const { status, search } = filterDto;
-    
+
     // define a temporty array to hold the result
+
     let tasks = this.getAllTasks();
-    
+
     // do something with status
     if (status) {
       tasks = tasks.filter((task) => task.status === status);
@@ -25,8 +26,7 @@ export class TasksService {
     // do something with search
     if (search) {
       tasks = tasks.filter((task) => {
-        if (task.title.includes(search) || task.description.includes(search))
-        {
+        if (task.title.includes(search) || task.description.includes(search)) {
           return true;
         }
         return false;
